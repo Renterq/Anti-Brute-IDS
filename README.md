@@ -12,7 +12,7 @@ Linux sunucular için geliştirilmiş, SSH loglarını gerçek zamanlı analiz e
 ## 🛠️ Kurulum ve Çalıştırma
 1. Projeyi klonlayın ve klasöre girin.
 2. `sudo bash install.sh` komutu ile gerekli tüm bağımlılıkları ve sanal ortamı kurun.
-3. `sudo ./dodi_env/bin/python ids.py` komutuyla sistemi başlatın.
+3. `sudo ./venv/bin/python ids.py` komutuyla sistemi başlatın.
 4. İlk açılışta sistem size Discord ayarlarınızı soracaktır.
 
 ## 🤖 Discord Yapılandırması
