@@ -28,5 +28,5 @@ pip install requests
 
 echo "========================================"
 echo "[+] Kurulum Tamamlandı!"
-echo "[+] Başlatmak için: sudo ./dodi_env/bin/python ids.py"
+echo "[+] Başlatmak için: sudo ./venv/bin/python ids.py"
 echo "========================================"
