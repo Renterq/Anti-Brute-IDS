@@ -16,6 +16,9 @@ elif command -v pacman &> /dev/null; then
     pacman -Sy --noconfirm python python-pip
 fi
 
+echo "[*] GitHub üzerinden Anti-Brute-IDS kodları indiriliyor..."
+curl -sSL -o ids.py https://raw.githubusercontent.com/Renterq/Anti-Brute-IDS/main/ids.py
+
 echo "[*] Python Sanal Ortamı (venv) oluşturuluyor..."
 python3 -m venv venv
 source venv/bin/activate
