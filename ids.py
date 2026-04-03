@@ -6,7 +6,6 @@ import json
 import os
 import threading
 
-# Dosya yollarını belirleyelim
 YOL = os.path.dirname(os.path.abspath(__file__))
 AYAR_DOSYASI = os.path.join(YOL, "ayarlar.json")
 VERI_DOSYASI = os.path.join(YOL, "veritabani.json")
@@ -34,16 +33,13 @@ def verileri_yukle():
 def verileri_kaydet(veri):
     with open(VERI_DOSYASI, "w") as f: json.dump(veri, f, indent=4)
 
-# Global ayarları yükle
 AYARLAR = ayarlari_yukle()
 VERI = verileri_yukle()
 
 def bildirim_gonder(mesaj):
-    # Webhook Bildirimi
     if AYARLAR["WEBHOOK_URL"]:
         try: requests.post(AYARLAR["WEBHOOK_URL"], json={"content": mesaj})
         except: pass
-    # Bot DM Bildirimi
     if AYARLAR["BOT_TOKEN"] and AYARLAR["HEDEF_ID"]:
         headers = {"Authorization": f"Bot {AYARLAR['BOT_TOKEN']}", "Content-Type": "application/json"}
         try:
@@ -56,7 +52,6 @@ def bildirim_gonder(mesaj):
 def ip_banla(ip):
     if ip not in VERI["yasakli_iplar"]:
         print(f"[*] {ip} için cellat göreve çağrıldı...")
-        # En etkili ban komutu: -I INPUT 1 (En başa ekle)
         subprocess.run(f"sudo iptables -I INPUT 1 -s {ip} -j DROP", shell=True)
         VERI["yasakli_iplar"].append(ip)
         verileri_kaydet(VERI)
@@ -83,7 +78,6 @@ def otomatik_ban_kontrolu():
 
 def log_dinle():
     print("[*] journalctl üzerinden SSH logları izleniyor...")
-    # Ubuntu ve Arch uyumluluğu için -t sshd etiketi kullanıldı
     proc = subprocess.Popen(['/usr/bin/journalctl', '-fn', '0', '-t', 'sshd'],
                              stdout=subprocess.PIPE, text=True)
     while True:
