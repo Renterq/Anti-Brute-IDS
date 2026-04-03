@@ -17,8 +17,8 @@ elif command -v pacman &> /dev/null; then
 fi
 
 echo "[*] Python Sanal Ortamı (venv) oluşturuluyor..."
-python3 -m venv dodi_env
-source dodi_env/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 
 echo "[*] Gerekli Python kütüphaneleri (requests) kuruluyor..."
 pip install requests
